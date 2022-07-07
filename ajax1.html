@@ -1,0 +1,37 @@
+<html>
+<head><title>DEMO-1</title>
+</head>
+<body>
+
+	<div>
+		<script>
+			function showData()
+			{
+			   
+				var xhr = new XMLHttpRequest();
+				var sname = document.getElementById('txtName').value;
+				
+				xhr.onreadystatechange = function()
+				{
+					if (xhr.readyState == 4 && xhr.status == 200) 
+					{
+						document.getElementById('data').innerHTML = this.responseText;
+					}
+				}
+				
+				 xhr.open('GET','ajax1.php?StudName='+sname, true);
+				//xhr.open('GET','ajax1.php', true);
+				
+				xhr.send();
+			
+			}
+		</script> 
+	</div>
+ 
+<input type ='text' name='txtName' id='txtName' /> <br/>
+<!--<input type = 'button' value='Click ME' onclick="showData()"/><br/> <br/> -->
+<button id='btn1' onclick="showData()">Hit ME!</button>
+<br/>
+<div id="data" align="center"></div>
+</body>
+</html>

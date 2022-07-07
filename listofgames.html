@@ -1,0 +1,35 @@
+<!-- Write an Ajax program to display list of games in an array on clicking Ok button. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Of Games</title>
+</head>
+<body>
+    <div>
+        <script>
+            function display()
+            {
+                var xhr = new XMLHttpRequest();
+                var show = document.getElementById('games').value;
+
+                xhr.onreadystatechange = function()
+                {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        document.getElementById('display').innerHTML = this.responseText;
+                    }
+                }
+
+                xhr.open('GET','listofgames.php?game='+show,true);
+                xhr.send();
+            }
+        </script>
+    </div>
+    <h2>Display the list of Games : </h2>
+    <input type="button" name="games" value="OK" id="games" onClick="display()">
+    <div id="display" align="center"></div>
+</body>
+</html>

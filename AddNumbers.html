@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function addition()
+    {
+        var x = document.getElementById("txtFirst").value;
+        var y = document.getElementById("txtSecond").value;
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function()
+        {
+            if(xhr.readyState==4 && xhr.status==200)
+            {
+                document.getElementById("txtAns").value = xhr.responseText; 
+            }
+        }
+
+        xhr.open("GET","AddNumbers.php?num1="+x+"&num2="+y, true);
+        xhr.send();
+
+    }
+
+</script>
+FIRST :<input type ="text" name="txtFirst" id="txtFirst" /> <br/><br/>
+SECOND :<input type ="text" name="txtSecond" id="txtSecond" /> <br/><br/>
+RESULT :<input type ="text" name="txtAns" id="txtAns" /> <br/><br/>
+<button id="btnAdd" onclick="addition()">Click to ADD</button>
+</form>
+</body>
+</html>

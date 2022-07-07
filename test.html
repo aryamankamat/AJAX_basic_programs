@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing</title>
+</head>
+<body bgcolor="yellow">
+    <!-- <div>
+            <script>
+                function display()
+                {
+                    var xhr = new XMLHttpRequest();
+                    var name = document.getElementById('txtname').value;
+                    
+                    xhr.onreadystatechange = function()
+                    {
+                        if (xhr.readyState == 4 && xhr.status == 200) 
+                        {
+                              document.getElementById('container').innerHTML = this.responseText;   
+                        }
+                    }
+
+                    xhr.open('GET','test.php?sname='+name,true);
+
+                    xhr.send();
+                }
+            </script>
+    </div> -->
+
+    <div>
+        <script>
+            function display()
+            {
+                 var xhr = new XMLHttpRequest();
+                 var op = document.getElementById('hobbies[]').value;
+
+                 xhr.onreadystatechange = function()
+                 {
+                    if (xhr.readyState == 4 && xhr.status == 200) 
+                    {
+                        document.getElementById('container').innerHTML = this.responseText;    
+                    }
+                 }
+
+                 xhr.open('GET','test.php?operation='+op,true);
+                 xhr.send();
+            }
+        </script>
+    </div>
+    <div align="center">
+           <!-- Enter Your name : <input type="text" name="txtname" id="txtname"><br> -->
+           <h3>Select Your Hobbies</h3>
+           <select name="hobbies[]" id="hobbies[]" multiple>
+            <option value="1">C++</option>
+            <option value="2">java</option>
+            <option value="3">python</option>
+           </select><br>
+           <button id="send" onclick="display()">send</button>
+    </div>
+    <div align="center" id="container"></div>
+</body>
+</html>
